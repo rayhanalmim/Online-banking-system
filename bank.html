@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online_Banking_System</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class=" mt-10">
+    <header>
+        <h1 class="text-4xl mt-4 font-bold text-center text-[black] ">Let's get some money</h1>
+
+        <div class="grid lg:grid-cols-3 sm:grid-cols-1 gap-4 w-5/6 mx-auto mt-6">
+            <div class="p-4 pb-7 bg-[#22c55e] rounded">
+                <h3 class="text-[white] text-lg">Deposit</h3>
+                <h3 class="text-[white] text-5xl">$<span id="deposit-amout">00</span></h3>
+            </div>
+            <div class="p-4 pb-7 bg-[#b45309] rounded">
+                <h3 class="text-[white] text-lg">Withdrow</h3>
+                <h3 class="text-[white] text-5xl">$<span id="withdrow-amount">00</span></h3>
+            </div>
+            <div class="p-4 pb-7 bg-[#7c3aed] rounded">
+                <h3 class="text-[white] text-lg">Blance</h3>
+                <h3 class="text-[white] text-5xl">$<span id="total-blance">1250</span></h3>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="mt-10 grid sm:grid-cols-1 lg:grid-cols-2  gap-4  w-5/6 mx-auto">
+
+            <div class="space-y-1 py-4 rounded bg-[#047857]">
+                <h1 class="text-2xl mt-4 font-bold text-center mb-5 text-[white] ">Please Deposit</h1>
+                <div class="flex justify-center">
+                    <input class="lg:w-[400px] w-[250px] pl-4 text-sm p-1 rounded-sm" type="text" name="" id="input-deposit"
+                        placeholder="$ Amount you want to deposit">
+                </div>
+                <div class="flex justify-center">
+                    <button id="deposit-button"
+                        class="btn btn-secondary bg-[#be123c] px-8 py-1 mt-3 hover:bg-[#0891b2] border-0 font-bold tracking-wide">Deposit</button>
+                </div>
+            </div>
+
+            <div class="space-y-1 py-4 rounded bg-[#115e59]">
+                <h1 class="text-2xl mt-4 font-bold text-center mb-5 text-[white] ">Please Withdrow</h1>
+                <div class="flex justify-center">
+                    <input class="lg:w-[400px] w-[250px] pl-4 text-sm p-1 rounded-sm" type="text" name="" id="input-withdrow"
+                        placeholder="$ Amount you want to Withdrow">
+                </div>
+                <div class="flex justify-center">
+                    <button id="withdrow-button"
+                        class="btn btn-secondary bg-[#be123c] px-8 py-1 mt-3 hover:bg-[#0891b2] border-0 font-bold tracking-wide">Withdrow</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('deposit-button').addEventListener('click', function(){
+            const inputDp = document.getElementById('input-deposit');
+            const dp = inputDp.value;
+
+            const dpBlance = document.getElementById('deposit-amout');
+            const temp = dpBlance.innerText;
+            const tempInt = parseInt(temp);
+            
+            const dpInt = parseInt(dp);
+
+            const totalBlance = document.getElementById('total-blance');
+            const totalBlanceInner = totalBlance.innerText;
+            const totalBlanceInt = parseInt(totalBlanceInner);
+            
+            
+            if(dpInt !== dpInt){
+                alert('please enter valid number');
+                inputDp.value = '';
+                
+            }
+            else{
+                const addDp = dpInt + tempInt;
+                dpBlance.innerText = addDp;
+                inputDp.value = '';
+                const addTotal = dpInt + totalBlanceInt;
+                totalBlance.innerText = addTotal;
+            }
+        })
+
+        document.getElementById('withdrow-button').addEventListener('click', function(){
+            const inputWd = document.getElementById('input-withdrow');
+            const wd = inputWd.value;
+
+            const wdBlance = document.getElementById('withdrow-amount');
+            const tempp = wdBlance.innerText;
+            const temppInt = parseInt(tempp);
+            
+            const wdInt = parseInt(wd);
+
+            const totalBlances = document.getElementById('total-blance');
+            const totalBlancesInner = totalBlances.innerText;
+            const totalBlancesInt = parseInt(totalBlancesInner);
+
+            if(wdInt !== wdInt){
+                alert('please enter valid number');
+                inputWd.value = '';
+                
+            }
+            else if (totalBlancesInt < wdInt){
+                alert('insufficient balance');
+                inputWd.value = '';
+            }
+            else{
+                const addWd = wdInt + temppInt;
+                wdBlance.innerText = addWd;
+                inputWd.value = '';
+                const addTotal = totalBlancesInt - wdInt;
+                totalBlances.innerText = addTotal;
+            }
+        })
+    </script>
+</body>
+
+</html>

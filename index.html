@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online_Banking_System</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class=" mt-10">
+    <header>
+        <h1 class="text-4xl mt-4 font-bold text-center text-[black] ">Welcome to online <br> <span
+                class="text-[#5b21b6]">banking systems</span></h1>
+    </header>
+    <main class=" flex justify-center items-center">
+        <div
+            class="mt-5 flex justify-center rounded-xl bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% lg:w-4/6  w-11/12 pb-5">
+
+            <div class="space-y-1">
+                <h1 class="text-2xl mt-4 font-bold text-center mb-5 text-[black] ">Sing in to your account</span></h1>
+                <h3 class="">Email Address</h3>
+                <input class="lg:w-[400px] w-full pl-4 text-sm p-1 rounded-sm" type="email" name="" id="input-main"
+                    placeholder="Enter Your Email Address">
+                <br>
+                <h3>Password</h3>
+                <input class="lg:w-[400px] w-full pl-4 text-sm p-1 rounded-sm" type="password" name="" id="input-pas"
+                    placeholder="Enter Your Password">
+                <br>
+                <div class="flex justify-center">
+                    <button id="login-button"
+                        class="btn btn-secondary px-8 py-1 mt-3 hover:bg-[#0891b2] border-0 font-bold tracking-wide">Log
+                        In</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', function () {
+            const inputMail = document.getElementById('input-main');
+            const email = inputMail.value;
+
+            const inputPas = document.getElementById('input-pas');
+            const password = inputPas.value;
+
+            if (email === 'rayhan@mail.com' && password === '1234') {
+                window.location.href = 'bank.html';
+            }
+            else {
+                inputMail.value = '';
+                inputPas.value = '';
+                alert('Please enter valid user information')
+            }
+        })
+    </script>
+</body>
+
+</html>
